@@ -3,6 +3,7 @@
 .idea/
 .vscode/
 node_modules/
+dist/
 build/
 
 # Files
