@@ -25,9 +25,30 @@ const optimize = () => {
 
 const getFilename = (ext) => `[name]${IS_DEV ? '' : '.[contenthash]'}.${ext}`
 
+const setPostCssLoader = () => {
+  return {
+    loader: 'postcss-loader',
+    options: {
+      postcssOptions: {
+        plugins: [
+          require('autoprefixer')({
+            overrideBrowserslist: ['last 2 versions', '> 1%'],
+          }),
+        ],
+      },
+    },
+  }
+}
+
 const setCssLoaders = (extra) => {
-  const loaders = [MiniCssExtractPlugin.loader, 'css-loader']
-  return (extra ? [...loaders, extra] : loaders)
+  const loaders = [
+    MiniCssExtractPlugin.loader,
+    'css-loader'
+  ]
+
+  if (IS_PROD) loaders.push(setPostCssLoader())
+
+  return (extra ? [...loaders, extra] : loaders);
 }
 
 const setJsLoaders = (extra) => {
