@@ -1,0 +1,21 @@
+@import '~normalize.css';
+@import './fonts.css';
+
+h1 {
+  text-align: center;
+  color: purple;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+}
+.container {
+  width: minmax(100% - 20px, 1024px);
+  margin-inline: auto;
+}
+
+.logo {
+  background-image: url('../assets/icon-square-big.png');
+  width: 400px;
+  height: 400px;
+  background-size: cover;
+  margin: 0 auto;
+}
